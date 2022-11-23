@@ -46,6 +46,8 @@ Route::get('/queue', [QueueController::class, 'getQueueSongs'])->name('queue');
 
 Route::get('/playlistdetail/{id}', [PlaylistController::class, 'getPlaylistDetails']);
 
+Route::get('/playlist/{id}/delete', [PlaylistController::class, 'deletePlaylist']);
+
 Route::post('/playlist/create', [QueueController::class, 'create']);
 
 require __DIR__.'/auth.php';

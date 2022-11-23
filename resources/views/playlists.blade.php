@@ -13,7 +13,8 @@
                     <tr>
                     <th>{{$data->id}}</th></br>    
                     <th>{{$data->title}}</th><br></br>   
-                    <a href="/playlistdetail/<?= $data->id; ?>" style="padding: 5px; border-width: 2px;">Details</a></br></br>
+                    <a href="/playlistdetail/<?= $data->id; ?>" style="padding: 5px; border-width: 2px;">Details</a>
+                    <a href="/playlist/<?= $data->id; ?>/delete" style="padding: 5px; border-width: 2px;">Remove</a></br></br>
                     </tr>
                 @endforeach
                 </div>

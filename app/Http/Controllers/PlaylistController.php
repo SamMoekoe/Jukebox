@@ -27,4 +27,12 @@ class PlaylistController extends Controller
         return view('playlistdetail')->with(['name'=> $name, 'select' => $select, 'song' => $song]);
     }
     
+    public function deletePlaylist($id){
+
+        Playlist::where('id', $id)->delete();
+        Saved_Song::where('listid', $id)->delete();
+        
+        
+        return redirect('/playlists');
+    }
 }
