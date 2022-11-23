@@ -11,7 +11,7 @@ class QueueController extends Controller
 
         app('App\Http\Controllers\SessionController')->sessionPush('playlists', $id, $request); 
 
-        return redirect('/playlists');
+        return redirect('/queue');
     }
 
     public function getQueueSongs(Request $request){
@@ -22,4 +22,10 @@ class QueueController extends Controller
         return view('/queue')->with(['value' => $value, 'song' => $song]);
     }
     
+    public function remove(Request $request, $id){ 
+
+        app('App\Http\Controllers\SessionController')->sessionPull('playlists', $id, $request); 
+
+        return redirect('/queue');
+    }
 }
