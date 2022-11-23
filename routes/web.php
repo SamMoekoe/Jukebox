@@ -26,6 +26,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/playlistname', function () {
+    return view('playlistname');
+});
+
 Route::get('/genres', [GenreController::class, 'getGenres'])->name('genres');
 
 Route::get('/genresongs/{id}', [GenreController::class, 'getGenreSongs']);
@@ -39,5 +43,9 @@ Route::get('/queue/{id}/add', [QueueController::class, 'add']);
 Route::get('/queue/{id}/remove', [QueueController::class, 'remove']);
 
 Route::get('/queue', [QueueController::class, 'getQueueSongs'])->name('queue');
+
+Route::get('/playlistdetail/{id}', [PlaylistController::class, 'getPlaylistDetails']);
+
+Route::post('/playlist/create', [QueueController::class, 'create']);
 
 require __DIR__.'/auth.php';

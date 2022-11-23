@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Temporary Playlist') }}
+            {{ __('Queue') }}
             @php $duration = 0
             @endphp
             <a href="/playlistname" style="padding: 5px; border-width: 2px; float:right">Make it permanent</a>

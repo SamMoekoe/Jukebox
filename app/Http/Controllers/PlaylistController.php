@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Playlist;
+use App\Models\Saved_Song;
+use App\Models\Song;
 
 class PlaylistController extends Controller
 {
@@ -14,4 +16,15 @@ class PlaylistController extends Controller
         
         return view('/playlists')->with('playlist', $playlist);
     }
+
+    public function getPlaylistDetails($id){
+        $name = Playlist::where('id', $id)->get();
+
+        $select = Saved_Song::where('listid', $id)->get();
+
+        $song = Song::all();
+
+        return view('playlistdetail')->with(['name'=> $name, 'select' => $select, 'song' => $song]);
+    }
+    
 }
