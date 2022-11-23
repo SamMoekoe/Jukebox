@@ -11,13 +11,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 @foreach($song as $key => $data)
                     <tr>
-                    <th>Title: {{$data->title}}</th><br>
-                    <th>Artist: {{$data->artist}}</th><br>  
-                    <th>Album: {{$data->album}}</th><br> 
-                    <th>Genre: {{$data->genre}}</th> <br>    
-                    <th>Duration: {{$data->duration}}</th><br></br>
+                    <th><b>Title:</b> {{$data->title}}</th><br>
+                    <th><b>Artist:</b> {{$data->artist}}</th><br>  
+                    <th><b>Album:</b> {{$data->album}}</th><br> 
+                    <th><b>Genre:</b> {{$data->genre}}</th> <br>    
+                    <th><b>Duration:</b> {{$data->duration}}</th><br></br>
                     <a href="/genresongs/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Add to Playlist</a>
-                    <a href="/genresongs/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Add to Queue</a>
+                    <a href="/queue/<?= $data->id; ?>/add" style="padding: 5px; border-width: 2px;">Add to Queue</a>
                     <a href="/genresongs/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Back</a></br></br>
                     </tr>
                 @endforeach

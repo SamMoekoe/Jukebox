@@ -11,9 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 @foreach($songs as $key => $data)
                     <tr>
-                    <th>Title: {{$data->title}}</th></br>    
-                    <th>Artist: {{$data->artist}}</th><br>  
-                    <th>Album: {{$data->album}}</th>  
+                    <th><b>Title:</b> {{$data->title}}</th></br>    
+                    <th><b>Artist:</b> {{$data->artist}}</th><br>  
+                    <th><b>Album:</b> {{$data->album}}</th>  
                     <a href="/songdetail/<?= $data->id; ?>" style="padding: 5px; border-width: 2px;">Song details</a></br></br>
                     </tr>
                 @endforeach

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\PlaylistController;
-
+use App\Http\Controllers\QueueController;
 
 
 /*
@@ -33,5 +33,9 @@ Route::get('/genresongs/{id}', [GenreController::class, 'getGenreSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'getSongDetails']);
 
 Route::get('/playlists', [PlaylistController::class, 'getUserPlaylists'])->name('playlists');
+
+Route::get('/queue/{id}/add', [QueueController::class, 'add']);
+
+Route::get('/queue', [QueueController::class, 'getQueueSongs'])->name('queue');
 
 require __DIR__.'/auth.php';
