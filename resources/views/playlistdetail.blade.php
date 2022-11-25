@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             @foreach ($name as $data)
             <b>{{$data->title}}</b>
-            <a href="/playlistdetails/{{$data->id}}/rename" style="padding: 5px; border-width: 2px; float:right;">Rename</a>
+            <a href="/storename/{{$data->id}}" style="padding: 5px; border-width: 2px; float:right;">Rename</a>
             @endforeach
             @php $duration = 0
             @endphp
@@ -17,17 +17,18 @@
                     @foreach ($select as $key => $info)
                         @foreach ($song as $keys => $data)
                             @if ($data->id == $info->songid)
-                                {{$key + 1}}
-                                {{$data->title}}
-                                {{$data->album}}
-                                {{$data->artist}}
-                                {{$data->duration}}
+                                {{$key + 1}}<br>
+                                <b>Title:</b> {{$data->title}}
+                                <b>Duration:</b> {{$data->duration}}s<br>
+                                <b>Album:</b> {{$data->album}}
+                                <b>Artist:</b> {{$data->artist}}
+                                
                                 @php
                                     $duration = $duration + $data->duration
                                 @endphp
                             @endif
                         @endforeach
-                        <a href="/playlistdetail/{{$info->id}}/remove" style="padding: 5px; border-width: 2px; float:right;">Remove</a>
+                        <a href="/deletesong/{{$info->id}}" style="padding: 5px; border-width: 2px; float:right;">Remove</a>
                         <a href="/songdetail/{{$info->songid}}" style="padding: 5px; border-width: 2px; float:right">Details</a></br></br>
                     @endforeach
                     <b>Total Duration: {{$duration}} seconds</b>

@@ -35,4 +35,58 @@ class PlaylistController extends Controller
         
         return redirect('/playlists');
     }
+
+    public function getAllPlaylists(){
+
+        $playlist = Playlist::all();
+
+        return view('/selectplaylist')-> with('playlist', $playlist);
+    }
+
+    public function storeSong(Request $request, $id){
+
+        app('App\Http\Controllers\SessionController')->sessionPut('song', $id, $request);
+
+        return redirect('/selectplaylist');
+    }
+
+    public function saveSong(Request $request){
+
+        $list = Playlist::where('title', $request->playlist)->get();
+
+        $songid = app('App\Http\Controllers\SessionController')->sessionGetAll('song', $request);
+
+        $savedSong = new Saved_Song;
+
+        $savedSong->listid = $list[0]->id;
+
+        $savedSong->songid = $songid;
+
+        $savedSong->save();
+
+        return redirect('/playlistdetail/'. $list[0]->id);
+    }
+
+    public function deleteSong($id){
+
+        Saved_Song::where('id', $id)->delete();
+
+        return back();
+    }
+
+    public function storeName(Request $request, $id){
+
+        app('App\Http\Controllers\SessionController')->sessionPut('name', $id, $request);
+
+        return redirect('/playlistrename');
+    }
+
+    public function rename(Request $request){
+
+        $name = app('App\Http\Controllers\SessionController')->sessionGetAll('name', $request);
+
+        Playlist::where('id', $name)->update(['title' => $request->name]);
+
+        return redirect('/playlists');
+    }
 }

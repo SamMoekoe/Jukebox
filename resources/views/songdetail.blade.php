@@ -16,7 +16,7 @@
                     <th><b>Album:</b> {{$data->album}}</th><br> 
                     <th><b>Genre:</b> {{$data->genre}}</th> <br>    
                     <th><b>Duration:</b> {{$data->duration}}</th><br></br>
-                    <a href="/genresongs/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Add to Playlist</a>
+                    <a href="/store/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Add to Playlist</a>
                     <a href="/queue/<?= $data->id; ?>/add" style="padding: 5px; border-width: 2px;">Add to Queue</a>
                     <a href="/genresongs/<?= $data->genre; ?>" style="padding: 5px; border-width: 2px;">Back</a></br></br>
                     </tr>

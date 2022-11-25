@@ -30,6 +30,11 @@ Route::get('/playlistname', function () {
     return view('playlistname');
 });
 
+Route::get('/playlistrename', function () {
+    return view('playlistrename');
+});
+
+
 Route::get('/genres', [GenreController::class, 'getGenres'])->name('genres');
 
 Route::get('/genresongs/{id}', [GenreController::class, 'getGenreSongs']);
@@ -49,5 +54,17 @@ Route::get('/playlistdetail/{id}', [PlaylistController::class, 'getPlaylistDetai
 Route::get('/playlist/{id}/delete', [PlaylistController::class, 'deletePlaylist']);
 
 Route::post('/playlist/create', [QueueController::class, 'create']);
+
+Route::get('/selectplaylist', [PlaylistController::class, 'getAllPlaylists']);
+
+Route::get('/store/{id}', [PlaylistController::class, 'storeSong']);
+
+Route::post('/savesong', [PlaylistController::class, 'saveSong']);
+
+Route::get('/deletesong/{id}', [PlaylistController::class, 'deleteSong']);
+
+Route::get('/storename/{id}', [PlaylistController::class, 'storeName']);
+
+Route::post('/savename', [PlaylistController::class, 'rename']);
 
 require __DIR__.'/auth.php';
